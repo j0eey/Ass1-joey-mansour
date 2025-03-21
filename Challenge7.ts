@@ -3,40 +3,42 @@ class TaskManager {
     private currentId: number = 1;
 
     addTask(name: string): void {
-        if (typeof name !== "string") {
-            throw new Error("Task name should be a string");
+        if (typeof name !== "string" || !name.trim()) {
+            throw new Error("Task name should be a string.");
         }
-        const newTask = {
+
+        this.tasks.push({
             id: this.currentId++,
             name,
             status: "Pending...",
-        };
-        this.tasks.push(newTask);
+        });
     }
 
     completeTask(id: number): void {
-        const task = this.tasks.find((task) => task.id === id);
-        if (task) {
-            task.status = "Completed successfully";
-        } else {
+        const task = this.tasks.find(task => task.id === id);
+        if (!task) {
             throw new Error(`Task with ID ${id} is not found.`);
         }
+        task.status = "Completed successfully";
     }
 
     displayTasks(): void {
-        if (this.tasks.length === 0) {
-            console.log("No tasks are available");
+        if (!this.tasks.length) {
+            console.log("No tasks are available.");
             return;
         }
-        this.tasks.forEach((task) => {
-            console.log(`Task ID: ${task.id}, Name: "${task.name}", Status: ${task.status}`);
+        
+        console.log("Task List:");
+        this.tasks.forEach(task => {
+            console.log(`- [${task.id}] ${task.name}: ${task.status}`);
         });
     }
 }
-const taskManager = new TaskManager();
 
+const taskManager = new TaskManager();
 taskManager.addTask("Learn TypeScript");
 taskManager.addTask("Build a project");
-taskManager.addTask("Deploy the project")
+taskManager.addTask("Deploy the project");
+
 taskManager.completeTask(3);
 taskManager.displayTasks();
