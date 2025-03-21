@@ -4,30 +4,32 @@ var TaskManager = /** @class */ (function () {
         this.currentId = 1;
     }
     TaskManager.prototype.addTask = function (name) {
-        if (typeof name !== "string" || !name.trim()) {
-            throw new Error("Task name should be a string.");
+        if (typeof name !== "string") {
+            throw new Error("Task name should be a string");
         }
-        this.tasks.push({
+        var newTask = {
             id: this.currentId++,
             name: name,
             status: "Pending...",
-        });
+        };
+        this.tasks.push(newTask);
     };
     TaskManager.prototype.completeTask = function (id) {
         var task = this.tasks.find(function (task) { return task.id === id; });
-        if (!task) {
+        if (task) {
+            task.status = "Completed successfully";
+        }
+        else {
             throw new Error("Task with ID ".concat(id, " is not found."));
         }
-        task.status = "Completed successfully";
     };
     TaskManager.prototype.displayTasks = function () {
-        if (!this.tasks.length) {
-            console.log("No tasks are available.");
+        if (this.tasks.length === 0) {
+            console.log("No tasks are available");
             return;
         }
-        console.log("Task List:");
         this.tasks.forEach(function (task) {
-            console.log("- [".concat(task.id, "] ").concat(task.name, ": ").concat(task.status));
+            console.log("Task ID: ".concat(task.id, ", Name: \"").concat(task.name, "\", Status: ").concat(task.status));
         });
     };
     return TaskManager;

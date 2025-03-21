@@ -29,7 +29,6 @@ class LRUCache {
 }
 
 const cache = new LRUCache(2);
-
 cache.put(1, 1);
 cache.put(2, 2);
 console.log(cache.get(2));

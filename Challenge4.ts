@@ -13,7 +13,7 @@ function firstNonRepeatingChar(str: string): string | null {
   
     return null;
 }
-  
+
 console.log(firstNonRepeatingChar("Rihanna"));
 
   

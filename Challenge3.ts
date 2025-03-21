@@ -8,6 +8,6 @@ function findMissingNumber(arr: number[]): number {
   
     return expectedSum - actualSum;
 }
-  
+
 console.log(findMissingNumber([50, 51, 53, 54, 55]));
   

@@ -21,4 +21,3 @@ function deepEqual(obj1: any, obj2: any): boolean {
 
 console.log(deepEqual({ a: 1, b: { c: 2 } }, { a: 1, b: { c: 2 } }));
 console.log(deepEqual({ a: 1, b: { c: 2 } }, { a: 1, b: { c: 3 } }));
-  
