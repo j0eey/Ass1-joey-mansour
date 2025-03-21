@@ -11,4 +11,4 @@ function countVowels(str: string): number {
     return count;
 }
 
-console.log(countVowels("hello world"));
+console.log(countVowels("hello world, this is joey"));
